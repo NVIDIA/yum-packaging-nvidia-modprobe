@@ -7,7 +7,7 @@ License:        GPLv2+
 URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  %{ix86} x86_64
 
-Source0:        ftp://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/NVIDIA/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  m4
 
