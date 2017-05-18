@@ -1,6 +1,6 @@
 Name:           nvidia-modprobe
 Version:        375.66
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          2
 License:        GPLv2+
@@ -22,6 +22,8 @@ present.
 sed -i '/+= -O0 -g/d' utils.mk
 
 %build
+export CFLAGS="%{optflags}"
+export LDFLAGS="%{?__global_ldflags}"
 make %{?_smp_mflags} \
     DEBUG=1 \
     NV_VERBOSE=1 \
@@ -31,13 +33,18 @@ make %{?_smp_mflags} \
 mkdir -p %{buildroot}%{_sbindir}
 %make_install INSTALL="install -p" PREFIX=%{_prefix}
 
+# Fix permissions
+chmod -x %{buildroot}%{_mandir}/man1/%{name}.1.*
+
 %files
-%{!?_licensedir:%global license %%doc}
 %license COPYING
 %attr(4755, root, root) %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Thu May 18 2017 Simone Caronni <negativo17@gmail.com> - 2:375.66-2
+- Use correct compile options, fix man page permissions.
+
 * Wed May 10 2017 Simone Caronni <negativo17@gmail.com> - 2:375.66-1
 - Update to 375.66.
 
