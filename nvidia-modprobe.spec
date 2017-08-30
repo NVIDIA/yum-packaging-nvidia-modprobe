@@ -8,6 +8,7 @@ URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  %{ix86} x86_64
 
 Source0:        https://github.com/NVIDIA/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         %{name}-384.69-man-page-permissions.patch
 
 BuildRequires:  m4
 
@@ -18,6 +19,7 @@ present.
 
 %prep
 %setup -q
+%patch0 -p1
 # Remove additional CFLAGS added when enabling DEBUG
 sed -i '/+= -O0 -g/d' utils.mk
 
@@ -27,14 +29,14 @@ export LDFLAGS="%{?__global_ldflags}"
 make %{?_smp_mflags} \
     DEBUG=1 \
     NV_VERBOSE=1 \
-    PREFIX=%{_prefix}
+    PREFIX=%{_prefix} \
+    STRIP_CMD=true
 
 %install
-mkdir -p %{buildroot}%{_sbindir}
-%make_install INSTALL="install -p" PREFIX=%{_prefix}
-
-# Fix permissions
-chmod -x %{buildroot}%{_mandir}/man1/%{name}.1.*
+%make_install \
+    NV_VERBOSE=1 \
+    PREFIX=%{_prefix} \
+    STRIP_CMD=true
 
 %files
 %license COPYING
@@ -44,6 +46,7 @@ chmod -x %{buildroot}%{_mandir}/man1/%{name}.1.*
 %changelog
 * Wed Aug 30 2017 Simone Caronni <negativo17@gmail.com> - 2:384.69-1
 - Update to 384.69.
+- Update SPEC file.
 
 * Wed Jul 26 2017 Simone Caronni <negativo17@gmail.com> - 2:384.59-1
 - Update to 384.59.
