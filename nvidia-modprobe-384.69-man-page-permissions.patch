@@ -1,0 +1,12 @@
+diff -Naur nvidia-modprobe-384.69.old/Makefile nvidia-modprobe-384.69/Makefile
+--- nvidia-modprobe-384.69.old/Makefile	2017-08-30 21:08:57.855409355 +0200
++++ nvidia-modprobe-384.69/Makefile	2017-08-30 21:09:17.843788841 +0200
+@@ -111,7 +111,7 @@
+ 
+ MANPAGE_install: $(MANPAGE)
+ 	$(MKDIR) $(MANDIR)
+-	$(INSTALL) $(INSTALL_BIN_ARGS) $< $(MANDIR)/$(notdir $<)
++	$(INSTALL) $(INSTALL_DOC_ARGS) $< $(MANDIR)/$(notdir $<)
+ 
+ $(eval $(call DEBUG_INFO_RULES, $(NVIDIA_MODPROBE)))
+ $(NVIDIA_MODPROBE).unstripped: $(OBJS)
