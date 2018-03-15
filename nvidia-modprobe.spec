@@ -1,6 +1,6 @@
 Name:           nvidia-modprobe
-Version:        390.25
-Release:        2%{?dist}
+Version:        390.42
+Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
 License:        GPLv2+
@@ -44,6 +44,9 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Thu Mar 15 2018 Simone Caronni <negativo17@gmail.com> - 3:390.42-1
+- Update to 390.42.
+
 * Tue Feb 27 2018 Simone Caronni <negativo17@gmail.com> - 3:390.25-2
 - Align Epoch with other components.
 
