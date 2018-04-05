@@ -39,7 +39,11 @@ make %{?_smp_mflags} \
     STRIP_CMD=true
 
 %files
+%if 0%{?rhel} == 6
+%doc COPYING
+%else
 %license COPYING
+%endif
 %attr(4755, root, root) %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1.*
 
