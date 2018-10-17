@@ -1,5 +1,5 @@
 Name:           nvidia-modprobe
-Version:        390.87
+Version:        410.66
 Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
@@ -10,6 +10,7 @@ ExclusiveArch:  %{ix86} x86_64
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-384.69-man-page-permissions.patch
 
+BuildRequires:  gcc
 BuildRequires:  m4
 
 %description
@@ -44,6 +45,9 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Wed Oct 17 2018 Simone Caronni <negativo17@gmail.com> - 3:410.66-1
+- Update to 410.66.
+
 * Thu Sep 06 2018 Simone Caronni <negativo17@gmail.com> - 3:390.87-1
 - Update to 390.87.
 
