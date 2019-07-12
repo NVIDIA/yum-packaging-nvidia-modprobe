@@ -1,5 +1,5 @@
 Name:           nvidia-modprobe
-Version:        430.26
+Version:        430.34
 Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
@@ -45,6 +45,9 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Fri Jul 12 2019 Simone Caronni <negativo17@gmail.com> - 3:430.34-1
+- Update to 430.34.
+
 * Wed Jun 12 2019 Simone Caronni <negativo17@gmail.com> - 3:430.26-1
 - Update to 430.26.
 
