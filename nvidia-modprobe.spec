@@ -19,7 +19,10 @@ BuildRequires:  m4
 
 Requires:       nvidia-driver-%{_named_version}%{?_isa} = %{?epoch}:%{version}
 Provides:       %{_basename} = %{?epoch:%{epoch}:}%{version}-%{release}
-#Obsoletes:      %{_basename} < %{?epoch:%{epoch}:}%{version}-%{release}
+
+%if 0%{?is_dkms} == 1
+Obsoletes:      %{_basename} < %{?epoch:%{epoch}:}%{version}-%{release}
+%endif
 
 %description
 This utility is used by user-space NVIDIA driver components to make sure the
