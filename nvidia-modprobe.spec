@@ -1,5 +1,5 @@
 Name:           nvidia-modprobe
-Version:        440.59
+Version:        440.64
 Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
@@ -45,6 +45,9 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Fri Feb 28 2020 Simone Caronni <negativo17@gmail.com> - 3:440.64-1
+- Update to 440.64.
+
 * Tue Feb 04 2020 Simone Caronni <negativo17@gmail.com> - 3:440.59-1
 - Update to 440.59.
 
