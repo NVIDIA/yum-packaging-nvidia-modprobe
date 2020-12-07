@@ -19,8 +19,7 @@ NVIDIA kernel modules are loaded and that the NVIDIA character device files are
 present.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # Remove additional CFLAGS added when enabling DEBUG
 sed -i '/+= -O0 -g/d' utils.mk
 
