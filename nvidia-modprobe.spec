@@ -1,6 +1,6 @@
 Name:           nvidia-modprobe
-Version:        450.80.02
-Release:        2%{?dist}
+Version:        460.27.04
+Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
 License:        GPLv2+
@@ -44,6 +44,10 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
+* Sun Dec 20 2020 Simone Caronni <negativo17@gmail.com> - 3:460.27.04-1
+- Update to 460.27.04.
+- Trim changelog.
+
 * Mon Dec 07 2020 Simone Caronni <negativo17@gmail.com> - 3:450.80.02-2
 - Use autoseptup macro.
 
@@ -113,57 +117,3 @@ make %{?_smp_mflags} \
 
 * Thu Jan 17 2019 Simone Caronni <negativo17@gmail.com> - 3:415.27-1
 - Update to 415.27.
-
-* Thu Dec 20 2018 Simone Caronni <negativo17@gmail.com> - 3:415.25-1
-- Update to 415.25.
-
-* Fri Dec 14 2018 Simone Caronni <negativo17@gmail.com> - 3:415.23-1
-- Update to 415.23.
-
-* Sun Dec 09 2018 Simone Caronni <negativo17@gmail.com> - 3:415.22-1
-- Update to 415.22.
-
-* Thu Nov 22 2018 Simone Caronni <negativo17@gmail.com> - 3:415.18-1
-- Update to 415.18.
-
-* Mon Nov 19 2018 Simone Caronni <negativo17@gmail.com> - 3:410.78-1
-- Update to 410.78.
-
-* Fri Oct 26 2018 Simone Caronni <negativo17@gmail.com> - 3:410.73-1
-- Update to 410.73.
-
-* Wed Oct 17 2018 Simone Caronni <negativo17@gmail.com> - 3:410.66-1
-- Update to 410.66.
-
-* Sat Sep 22 2018 Simone Caronni <negativo17@gmail.com> - 3:410.57-1
-- Update to 410.57.
-
-* Wed Aug 22 2018 Simone Caronni <negativo17@gmail.com> - 3:396.54-1
-- Update to 396.54.
-
-* Sun Aug 19 2018 Simone Caronni <negativo17@gmail.com> - 3:396.51-1
-- Update to 396.51.
-
-* Fri Jul 20 2018 Simone Caronni <negativo17@gmail.com> - 3:396.45-1
-- Update to 396.45.
-
-* Fri Jun 01 2018 Simone Caronni <negativo17@gmail.com> - 3:396.24-1
-- Update to 396.24.
-
-* Tue May 22 2018 Simone Caronni <negativo17@gmail.com> - 3:390.59-1
-- Update to 390.59.
-
-* Tue Apr 03 2018 Simone Caronni <negativo17@gmail.com> - 3:390.48-1
-- Update to 390.48.
-
-* Thu Mar 15 2018 Simone Caronni <negativo17@gmail.com> - 3:390.42-1
-- Update to 390.42.
-
-* Tue Feb 27 2018 Simone Caronni <negativo17@gmail.com> - 3:390.25-2
-- Align Epoch with other components.
-
-* Tue Jan 30 2018 Simone Caronni <negativo17@gmail.com> - 2:390.25-1
-- Update to 390.25.
-
-* Fri Jan 19 2018 Simone Caronni <negativo17@gmail.com> - 2:390.12-1
-- Update to 390.12.
