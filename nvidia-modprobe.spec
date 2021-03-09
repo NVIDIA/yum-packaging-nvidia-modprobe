@@ -5,7 +5,7 @@ Summary:        NVIDIA kernel module loader
 Epoch:          3
 License:        GPLv2+
 URL:            http://www.nvidia.com/object/unix.html
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 ppc64le
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-384.69-man-page-permissions.patch
@@ -39,7 +39,11 @@ make %{?_smp_mflags} \
     STRIP_CMD=true
 
 %files
+%if 0%{?rhel} == 6
+%doc COPYING
+%else
 %license COPYING
+%endif
 %attr(4755, root, root) %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1.*
 
@@ -87,17 +91,11 @@ make %{?_smp_mflags} \
 * Sat Nov 30 2019 Simone Caronni <negativo17@gmail.com> - 3:440.36-1
 - Update to 440.36.
 
-* Sat Nov 09 2019 Simone Caronni <negativo17@gmail.com> - 3:440.31-1
+* Mon Nov 11 2019 Simone Caronni <negativo17@gmail.com> - 3:440.31-1
 - Update to 440.31.
 
-* Thu Oct 17 2019 Simone Caronni <negativo17@gmail.com> - 3:440.26-1
-- Update to 440.26.
-
-* Mon Sep 02 2019 Simone Caronni <negativo17@gmail.com> - 3:435.21-1
-- Update to 435.21.
-
-* Thu Aug 22 2019 Simone Caronni <negativo17@gmail.com> - 3:435.17-1
-- Update to 435.17.
+* Sat Sep 14 2019 Simone Caronni <negativo17@gmail.com> - 3:430.50-1
+- Update to 430.50.
 
 * Wed Jul 31 2019 Simone Caronni <negativo17@gmail.com> - 3:430.40-1
 - Update to 430.40.
@@ -121,8 +119,5 @@ make %{?_smp_mflags} \
 - Update to 418.43.
 - Trim changelog.
 
-* Wed Feb 06 2019 Simone Caronni <negativo17@gmail.com> - 3:418.30-1
-- Update to 418.30.
-
-* Thu Jan 17 2019 Simone Caronni <negativo17@gmail.com> - 3:415.27-1
-- Update to 415.27.
+* Fri Jan 04 2019 Simone Caronni <negativo17@gmail.com> - 3:410.93-1
+- Update to 410.93.
