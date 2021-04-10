@@ -16,6 +16,8 @@ The `main` branch contains this README. The `.spec` and `.patch` files can be fo
 - [Prerequisites](#Prerequisites)
   * [Clone this git repository](#Clone-this-git-repository)
   * [Install build dependencies](#Install-build-dependencies)
+- [Building with script](#Building-with-script)
+- [Building Manually](#Building-Manually)
 - [Related](#Related)
   * [DKMS nvidia](#DKMS-nvidia)
   * [NVIDIA driver](#NVIDIA-driver)
@@ -91,8 +93,98 @@ git clone -b ${branch} https://github.com/NVIDIA/yum-packaging-nvidia-modprobe
 
 ```shell
 # Packaging
-yum install rpm-build
+yum install m4 rpm-build
 ```
+
+
+## Building with script
+
+### Fetch script from `main` branch
+
+```shell
+cd yum-packaging-nvidia-modprobe
+git checkout remotes/origin/main -- build.sh
+```
+
+### Usage
+
+```shell
+./build.sh [$version | path/to/*.tar.{gz,bz2} | path/to/*.run]
+> ex: time ./build.sh 460.32.03
+> ex: time ./build.sh ~/Downloads/nvidia-modprobe-450.102.04.tar.bz2
+> ex: time ./build.sh ~/Downloads/nvidia-modprobe-460.32.03.tar.gz
+> ex: time ./build.sh ~/Downloads/NVIDIA-Linux-x86_64-450.102.04.run
+```
+> _note:_ runfile is only used to determine version
+
+
+
+## Building Manually
+
+### Packaging (`dnf` distros)
+> note: `fedora` & `rhel8`-based distros
+
+```shell
+mkdir BUILD BUILDROOT RPMS SRPMS SOURCES SPECS
+cp *.patch SOURCES/
+cp nvidia-modprobe-${version}.tar.gz SOURCES/
+cp nvidia-modprobe.spec SPECS/
+
+rpmbuild \
+    --define "%_topdir $(pwd)" \
+    --define "debug_package %{nil}" \
+    --define "version $version" \
+    --define "epoch 3" \
+    --define "extension gz" \
+    -v -bb SPECS/nvidia-modprobe.spec
+```
+
+### Packaging (`yum` distros)
+> note: `rhel7`-based distros
+
+```shell
+mkdir BUILD BUILDROOT RPMS SRPMS SOURCES SPECS
+cp *.patch SOURCES/
+cp nvidia-modprobe-${version}.tar.gz SOURCES/
+cp nvidia-modprobe.spec SPECS/
+
+# latest-dkms
+rpmbuild \
+    --define "%_topdir $(pwd)" \
+    --define "debug_package %{nil}" \
+    --define "version $version" \
+    --define "driver_branch latest-dkms" \
+    --define "is_dkms 1" \
+    --define "is_latest 1" \
+    --define "epoch 3" \
+    --define "extension gz" \
+    -v -bb SPECS/nvidia-modprobe.spec
+
+# latest
+rpmbuild \
+    --define "%_topdir $(pwd)" \
+    --define "debug_package %{nil}" \
+    --define "version $version" \
+    --define "driver_branch latest" \
+    --define "is_dkms 0" \
+    --define "is_latest 1" \
+    --define "epoch 3" \
+    --define "extension gz" \
+    -v -bb SPECS/nvidia-modprobe.spec
+
+# branch-460
+rpmbuild \
+    --define "%_topdir $(pwd)" \
+    --define "debug_package %{nil}" \
+    --define "version $version" \
+    --define "driver_branch branch-460" \
+    --define "is_dkms 0" \
+    --define "is_latest 0" \
+    --define "epoch 3" \
+    --define "extension gz" \
+    -v -bb SPECS/nvidia-modprobe.spec
+```
+
 
 ## Related
 
