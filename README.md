@@ -92,8 +92,10 @@ git clone -b ${branch} https://github.com/NVIDIA/yum-packaging-nvidia-modprobe
 ### Install build dependencies
 
 ```shell
+# Compilation
+yum install m4 gcc
 # Packaging
-yum install m4 rpm-build
+yum install rpm-build
 ```
 
 
