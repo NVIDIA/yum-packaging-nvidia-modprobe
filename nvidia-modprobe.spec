@@ -1,7 +1,5 @@
-%define _tar_end %{?extension}%{?!extension:bz2}
-
 Name:           nvidia-modprobe
-Version:        %{?version}%{?!version:430.14}
+Version:        430.14
 Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
@@ -9,7 +7,7 @@ License:        GPLv2+
 URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  %{ix86} x86_64 ppc64le aarch64
 
-Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.%{_tar_end}
+Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-384.69-man-page-permissions.patch
 
 BuildRequires:  gcc
@@ -53,10 +51,6 @@ make %{?_smp_mflags} \
 %{_mandir}/man1/%{name}.1.*
 
 %changelog
-* Fri Apr 09 2021 Kevin Mittman <kmittman@nvidia.com> - 3:460.00-1
-- Add extension variable for gz or bz2 input tarball file
-- Populate version using variable
-
 * Sat May 18 2019 Simone Caronni <negativo17@gmail.com> - 3:430.14-1
 - Update to 430.14.
 
