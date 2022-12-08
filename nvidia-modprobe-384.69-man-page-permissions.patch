@@ -1,8 +1,9 @@
-diff -Naur nvidia-modprobe-384.69.old/Makefile nvidia-modprobe-384.69/Makefile
---- nvidia-modprobe-384.69.old/Makefile	2017-08-30 21:08:57.855409355 +0200
-+++ nvidia-modprobe-384.69/Makefile	2017-08-30 21:09:17.843788841 +0200
-@@ -111,7 +111,7 @@
- 
+Index: nvidia-modprobe-src/Makefile
+===================================================================
+--- nvidia-modprobe-src.orig/Makefile
++++ nvidia-modprobe-src/Makefile
+@@ -110,7 +110,7 @@ NVIDIA_MODPROBE_install: $(NVIDIA_MODPRO
+ .PHONY: MANPAGE_install
  MANPAGE_install: $(MANPAGE)
  	$(MKDIR) $(MANDIR)
 -	$(INSTALL) $(INSTALL_BIN_ARGS) $< $(MANDIR)/$(notdir $<)
