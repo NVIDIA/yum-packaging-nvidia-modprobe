@@ -1,8 +1,7 @@
-Index: nvidia-modprobe-src/Makefile
-===================================================================
---- nvidia-modprobe-src.orig/Makefile
-+++ nvidia-modprobe-src/Makefile
-@@ -110,7 +110,7 @@ NVIDIA_MODPROBE_install: $(NVIDIA_MODPRO
+diff -Naur nvidia-modprobe-550.70.old/Makefile nvidia-modprobe-550.70/Makefile
+--- nvidia-modprobe-550.70.old/Makefile	2024-03-22 09:44:06.918286436 +0100
++++ nvidia-modprobe-550.70/Makefile	2024-03-22 09:44:17.502375236 +0100
+@@ -110,7 +110,7 @@
  .PHONY: MANPAGE_install
  MANPAGE_install: $(MANPAGE)
  	$(MKDIR) $(MANDIR)
