@@ -1,6 +1,6 @@
-diff -Naur nvidia-modprobe-550.70.old/Makefile nvidia-modprobe-550.70/Makefile
---- nvidia-modprobe-550.70.old/Makefile	2024-03-22 09:44:06.918286436 +0100
-+++ nvidia-modprobe-550.70/Makefile	2024-03-22 09:44:17.502375236 +0100
+diff -Naur nvidia-modprobe-525.60.11.old/Makefile nvidia-modprobe-525.60.11/Makefile
+--- nvidia-modprobe-525.60.11.old/Makefile	2022-11-28 20:15:22.000000000 +0100
++++ nvidia-modprobe-525.60.11/Makefile	2022-11-30 07:56:18.751429168 +0100
 @@ -110,7 +110,7 @@
  .PHONY: MANPAGE_install
  MANPAGE_install: $(MANPAGE)

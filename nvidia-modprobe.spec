@@ -1,15 +1,13 @@
-%define _tar_end %{?extension}%{?!extension:bz2}
-
 Name:           nvidia-modprobe
-Version:        %{?version}%{?!version:550.54.14}
+Version:        570.00
 Release:        1%{?dist}
 Summary:        NVIDIA kernel module loader
 Epoch:          3
 License:        GPLv2+
 URL:            http://www.nvidia.com/object/unix.html
-ExclusiveArch:  %{ix86} x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64
 
-Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.%{_tar_end}
+Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-man-page-permissions.patch
 
 BuildRequires:  gcc
@@ -44,3 +42,5 @@ export LDFLAGS="%{?__global_ldflags}"
 %license COPYING
 %attr(4755, root, root) %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1.*
+
+%changelog
